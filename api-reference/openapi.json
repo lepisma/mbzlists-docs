@@ -5,6 +5,11 @@
     "description": "API to retrieve lists from the database.",
     "version": "0.1.0"
   },
+  "servers": [
+    {
+      "url": "https://mbzlists.com"
+    }
+  ],
   "paths": {
     "/list": {
       "get": {
