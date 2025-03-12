@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/list": {
+    "/api/list": {
       "get": {
         "summary": "Retrieve public lists",
         "description": "Returns a list of all public lists from the database.",
