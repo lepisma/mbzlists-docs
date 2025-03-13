@@ -1,53 +1,30 @@
 ---
-title: 'Search'
-description: 'Basic and Advanced search for songs'
+title: "Search"
+description: "Basic and Advanced search for songs"
 ---
 
-## Image
+## Basic Search
 
-### Using Markdown
+Anything you type in the song search field in *mbzlists* will do the most sensible search across track names, artists, and releases via MusicBrainz API. In case this is not getting you what you want, you should consider using advanced search.
 
-The [markdown syntax](https://www.markdownguide.org/basic-syntax/#images) lets you add images using the following code
+## Advanced Search
 
-```md
-![title](/path/image.jpg)
-```
+Songs in MusicBrainz are stored with fields like `artist`, `country`, `release` (similar to album) etc. You can use them in your searches by adding text like `AND <field>:"term here"` in your query.
 
-Note that the image file size must be less than 5MB. Otherwise, we recommend hosting on a service like [Cloudinary](https://cloudinary.com/) or [S3](https://aws.amazon.com/s3/). You can then use that URL and embed.
+As an example, if I am not happy with the results of searching `yellow coldplay`, I could try searching for `yellow AND artist:coldplay`. Note that surrounding the field search query with " is important for multi word queries. Here are a few more example searches:
 
-### Using Embeds
+* `electrical storm AND release:best`
 
-To get more customizability with images, you can also use [embeds](/writing-content/embed) to add images
-
-```html
-<img height="200" src="/path/image.jpg" />
-```
-
-## Embeds and HTML elements
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-  style={{ width: '100%', borderRadius: '0.5rem' }}
-></iframe>
-
-<br />
+* `choo AND artist:"local train"`
 
 <Tip>
-
-Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html). This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.
-
+  For now, we only recognize the search to be advanced search when you are searching for at least `artist` or `release`.
 </Tip>
 
-### iFrames
+The search syntax is basically run on the [Lucene](https://lucene.apache.org/) backend. To make more complex queries, check the documentation [here](https://lucene.apache.org/core/7_7_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package.description). See [this page](https://musicbrainz.org/doc/MusicBrainz_API/Search#Recording) for list of all fields that you can use in the search to narrow the results down.
 
-Loads another HTML page within the document. Most commonly used for embedding videos.
 
-```html
-<iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>
-```
+
+<Info>
+  Since MusicBrainz is a community curated metadata database, sometimes you might end up with slightly incorrect (or missing) metadata as there could be many duplicates and variations (specially for *releases*). In that case, please consider contributing to the database by going [here](https://musicbrainz.org/doc/How_to_Contribute).
+</Info>
